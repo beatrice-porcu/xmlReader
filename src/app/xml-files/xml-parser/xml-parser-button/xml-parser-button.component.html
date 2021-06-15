@@ -1,0 +1,33 @@
+<ion-grid fixed>
+  <ion-row>
+    <ion-col size="10" offset="1">
+      <ion-button expand="block" color="primary" (click)="inputFile.click()">
+        Upload XML
+      </ion-button>
+      <input
+        #inputFile
+        id="input-file"
+        style="opacity: 0"
+        type="file"
+        accept=".xml"
+        (change)="onFileChange($event)"
+      />
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="10" offset="1">
+      <ion-item *ngIf="xmlFileName">
+        <ion-label class="ion-text-wrap ion-text-center"
+          >{{ xmlFileName }} - {{ xmlFile.size }} kb</ion-label
+        >
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-button (click)="onSubmit()" expand="block" [disabled]="!xmlFile">
+        {{ "analyze_file" | uppercase }}
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
